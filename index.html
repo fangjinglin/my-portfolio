@@ -15,14 +15,23 @@
 
 <header class="hero">
     <div class="hero-left">
-        <img src="hero.jpg" alt="芳靚" class="hero-img">
+        <!-- 點擊放大圖片 -->
+        <img src="hero.jpg" alt="芳靚" class="hero-img" id="heroImage">
     </div>
     <div class="hero-right">
         <h1>Hi，我是芳靚</h1>
         <p>資管系大四學生｜後端開發｜喜歡將資料與想法轉化為實務產品</p>
         <a href="contact.html" class="cta-button">聯絡我</a>
     </div>
+
+    <!-- 模態框 -->
+    <div id="imgModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div id="caption"></div>
+    </div>
 </header>
+
 
 <section class="card">
     <h2>技能亮點</h2>
@@ -60,5 +69,31 @@
 <footer>
     <p>© 2025 芳靚</p>
 </footer>
+
+<script>
+var modal = document.getElementById("imgModal");
+var img = document.getElementById("heroImage");
+var modalImg = document.getElementById("modalImg");
+var captionText = document.getElementById("caption");
+var span = document.getElementsByClassName("close")[0];
+
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+
+modal.onclick = function(event) {
+    if(event.target == modal){
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>
+
+
