@@ -2,15 +2,15 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>芳靚｜首頁</title>
+    <title>芳靚｜Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav>
-    <a href="index.html">首頁</a>
-    <a href="resume.html">履歷</a>
-    <a href="projects.html">作品集</a>
-    <a href="contact.html">聯絡我</a>
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact Me</a>
 </nav>
 
 <header class="hero">
@@ -19,9 +19,15 @@
         <img src="hero.jpg" alt="芳靚" class="hero-img" id="heroImage">
     </div>
     <div class="hero-right">
-        <h1>Hi，我是芳靚</h1>
-        <p>資管系大四學生｜後端開發｜喜歡將資料與想法轉化為實務產品</p>
-        <a href="contact.html" class="cta-button">聯絡我</a>
+        <h1>Hello, I'm 芳靚</h1>
+
+        <p class="hero-subtitle">
+            Department of Management Information Systems.  
+            <br>
+            I enjoy transforming data and ideas into practical products.
+        </p>
+
+        <a href="contact.html" class="cta-button">Contact Me</a>
     </div>
 
     <!-- 模態框 -->
@@ -34,7 +40,7 @@
 
 
 <section class="card">
-    <h2>技能亮點</h2>
+    <h2>Skill Highlights</h2>
     <div class="skills">
         <div class="skill-card">
             <h3>Python / Django</h3>
@@ -56,15 +62,17 @@
 </section>
 
 <section class="card">
-    <h2>專案概覽</h2>
-    <ul>
-        <li>智慧停車系統｜Django + SQLite｜即時車位查詢、地圖導引</li>
-        <li>To Do List App｜Kotlin Compose｜任務管理、優先順序設定</li>
-        <li>ArtSpace｜Kotlin Compose｜展示梵谷名作，支援滑動與 Tooltip</li>
-        <li>行事備忘錄 App｜Android Kotlin｜當日備忘錄顯示、地點地圖、時間提醒</li>
-        <li>資料庫訂單管理系統｜PHP + MySQL｜商品、顧客、訂單管理</li>
+    <h2>Projects Overview</h2>
+    <ul class="project-list">
+        <li class="parking">Smart Parking System | Django + SQLite | Real-Time Parking Queries with Map Guidance</li>
+        <li class="todo">To-Do List App | Kotlin Compose | Task Management and Prioritization</li>
+        <li class="artspace">ArtSpace | Kotlin Compose | Display Van Gogh's Masterpieces with Sliding and Tooltip Support</li>
+        <li class="memo">Daily Memo App | Android Kotlin | Displays daily memos, location maps, and time-based reminders</li>
+        <li class="order">Order Management System | PHP & MySQL | Products, Customers, and Orders Management</li>
     </ul>
 </section>
+
+
 
 <footer>
     <p>© 2025 芳靚</p>
@@ -93,6 +101,26 @@ modal.onclick = function(event) {
     }
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card");
+
+  function checkCards() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      if (cardTop < triggerBottom) {
+        card.classList.add("show");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkCards);
+  checkCards(); // 頁面一載入就檢查一次
+});
+</script>
+
 </body>
 </html>
 

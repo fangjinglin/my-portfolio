@@ -2,18 +2,24 @@
    全站字型與基礎
 ======================= */
 body {
-    font-family: "Poppins", "Microsoft JhengHei", sans-serif;
+    font-family: "Microsoft JhengHei", "PingFang TC", "Poppins", sans-serif;
     margin: 0;
-    background: #f5f5f5; /* 淺灰白背景 */
-    color: #364550; /* 文字深藍灰 */
+    background: #f5f5f5; 
+    color: #364550;
     line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+p, li {
+    font-size: 16px;
+    line-height: 1.8; /* 與專案列表一致 */
 }
 
 /* =======================
    導覽列
 ======================= */
 nav {
-    background: #364550; /* 深藍灰 */
+    background: #364550; 
     padding: 12px 20px;
     text-align: center;
     position: sticky;
@@ -24,34 +30,94 @@ nav {
 nav a {
     margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
-    color: #E6B968; /* 金色文字 */
-    transition: color 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    color: #E6B968;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav a:hover {
-    color: #98A383; /* 灰綠 hover */
+    color: #98A383;
+    transform: scale(1.05);
 }
 
 /* =======================
-   Header 區
+   Header 區 & Hero
 ======================= */
 header {
-    background-color: #98A383; /* 灰綠純色 */
+    background-color: #98A383;
     padding: 60px 20px;
     text-align: center;
     color: #364550;
-    animation: fadeIn 1s ease-in;
+    transform: translateX(-20px);
+    animation: heroSlideIn 0.8s forwards;
 }
 
-/* 圓形大頭照 */
-.hero-img {
-    width: 170px;
-    height: 170px;
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #98A383;
+    gap: 40px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: heroSlideIn 0.8s forwards;
+}
+
+.hero-left .hero-img {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
+    border: 4px solid #fff;
     object-fit: cover;
-    border: 4px solid #E6B968;
+    transition: transform 0.3s;
+}
+
+.hero-left .hero-img:hover {
+    transform: scale(1.05);
+}
+
+.hero-right {
+    max-width: 500px;
+    color: #364550;
+}
+
+.hero-right h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
     margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.8;
+    color: #2e3f4a;
+    font-weight: 500;
+}
+
+/* CTA 按鈕 */
+.cta-button {
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #E6B968;
+    color: #364550;
+    padding: 14px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+.cta-button:hover {
+    background-color: #364550;
+    color: #E6B968;
+    transform: translateY(-2px);
 }
 
 /* =======================
@@ -61,48 +127,146 @@ section {
     max-width: 900px;
     padding: 50px 20px;
     margin: 30px auto;
-    animation: fadeInUp 1s ease-in;
 }
 
-/* 標題 */
-h1, h2 {
-    margin: 0 0 15px 0;
+/* 標題層次 */
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 20px 0;
+}
+
+h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px 0;
 }
 
 /* 卡片效果 */
 .card {
-    background: #98A383; /* 灰綠卡片 */
+    background: #a0b398;
     color: #364550;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     margin-bottom: 30px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, opacity 0.6s;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card p, 
+.card li {
+    font-size: 16px;
+    line-height: 1.8;
+    padding-left: 0;
+    margin-bottom: 12px;
+}
+
+.card li ul li {
+    padding-left: 40px; /* 內層列表縮排一致 */
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* 卡片 li hover 微動畫 */
+.card li:hover {
+    transform: translateX(2px);
+    transition: transform 0.2s;
+}
+
+/* 專案列表圖示 */
+.project-list li {
+    list-style: none;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+li.parking::before { 
+    content: "🚗"; 
+    font-size: 32px; 
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+li.todo::before { 
+    content: "📝"; 
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+li.artspace::before { 
+    content: "🎨"; 
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+li.memo::before { 
+    content: "📓"; 
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+li.order::before { 
+    content: "🗄️"; 
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* =======================
-   CTA 按鈕
+   技能進度條
 ======================= */
-.cta-button {
-    display: inline-block;
-    background-color: #E6B968; 
-    color: #364550;
-    padding: 14px 30px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s;
-    margin-top: 15px;
+.skills {
+    max-width: 900px;
+    margin: 30px auto;
 }
 
-.cta-button:hover {
-    background-color: #364550;
-    color: #E6B968;
+.skill-card {
+    background: #fdfdf6; 
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.progress {
+    background-color: #d9d9d9;
+    border-radius: 8px;
+    height: 18px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.progress div {
+    height: 100%;
+    background: linear-gradient(90deg, #E6B968, #F1D17F);
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out;
 }
 
 /* =======================
@@ -117,30 +281,25 @@ footer {
 }
 
 /* =======================
-   RWD 手機版
+   社群圖示
 ======================= */
-@media (max-width: 600px) {
-    nav a {
-        display: block;
-        margin: 8px 0;
-    }
-    .hero-img {
-        width: 140px;
-        height: 140px;
-    }
+.social-links {
+    text-align: center;
+    margin: 50px 0;
 }
 
-/* =======================
-   動畫效果
-======================= */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+.social-links a {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 40px;
+    color: #364550;
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none;
 }
 
-@keyframes fadeInUp {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
+.social-links a:hover {
+    color: #E6B968;
+    transform: scale(1.1);
 }
 
 /* =======================
@@ -165,108 +324,27 @@ form textarea {
 }
 
 form input[type="submit"] {
-    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
     padding: 14px 30px;
     cursor: pointer;
     background-color: #E6B968;
     color: #364550;
     border: none;
     border-radius: 25px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 form input[type="submit"]:hover {
     background-color: #364550;
     color: #E6B968;
+    transform: scale(1.05);
 }
 
 /* =======================
-   技能進度條
+   模態框
 ======================= */
-.skills {
-    max-width: 900px;
-    margin: 30px auto;
-}
-
-.skill-card {
-    background: #fdfdf6; /* 米白卡片 */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-}
-
-.progress {
-    background-color: #d9d9d9;
-    border-radius: 8px;
-    height: 18px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.progress div {
-    height: 100%;
-    background-color: #E6B968;
-    border-radius: 8px;
-}
-
-/* =======================
-   社群圖示
-======================= */
-.social-links {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.social-links a {
-    display: inline-block;
-    margin: 0 20px;
-    font-size: 40px;
-    color: #364550;
-    transition: color 0.3s;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    color: #E6B968;
-}
-/* Hero 區左右排版 */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    background-color: #98A383; 
-    gap: 40px; /* 左右間距 */
-}
-
-.hero-left .hero-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    object-fit: cover;
-}
-
-.hero-right {
-    max-width: 600px;
-}
-
-.hero-right h1 {
-    margin-bottom: 15px;
-}
-
-.hero-right p {
-    margin-bottom: 20px;
-}
-
-/* 手機版改成上下排列 */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-}
 .modal {
     display: none;
     position: fixed;
@@ -286,6 +364,11 @@ form input[type="submit"]:hover {
     max-width: 90%;
     max-height: 80%;
     border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-content:hover {
+    transform: scale(1.02);
 }
 
 .close {
@@ -307,4 +390,44 @@ form input[type="submit"]:hover {
     color: #fff;
     padding: 10px;
     font-size: 18px;
+}
+
+/* =======================
+   動畫效果
+======================= */
+@keyframes heroSlideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity:0; transform: translateY(20px);}
+    to { opacity:1; transform: translateY(0);}
+}
+
+/* =======================
+   RWD 手機版
+======================= */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .hero-left .hero-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-right h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
 }

@@ -2,62 +2,82 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>芳靚｜履歷</title>
+    <title>芳靚｜Resume</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav>
-    <a href="index.html">首頁</a>
-    <a href="resume.html">履歷</a>
-    <a href="projects.html">作品集</a>
-    <a href="contact.html">聯絡我</a>
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact Me</a>
 </nav>
 
 <header>
-    <h1>我的履歷</h1>
-    <p>專注於系統開發、資料庫與 Android App，將專案從概念到完成落地。</p>
+    <h1>My Resume</h1>
+    <p>Focus on system development, database management, and Android app creation, guiding projects from concept to completion.</p>
 </header>
 
 <section class="card">
-    <h2>學歷背景</h2>
+    <h2>Academic Background</h2>
     <ul>
-        <li>台灣科技大學 資訊管理系 — 大四</li>
+        <li>NTUST - Department of Management Information Systems</li>
     </ul>
 </section>
 
 <section class="card">
-    <h2>技能</h2>
+    <h2>Technology</h2>
     <ul>
-        <li>程式語言：Python / Django、Java、Kotlin、HTML / CSS / JavaScript</li>
-        <li>資料庫：MySQL、SQLite</li>
-        <li>工具與技術：Git / GitHub、REST API、Excel / Power BI</li>
+        <li>Programming Language：Python / Django、Java、Kotlin、HTML / CSS / JavaScript</li>
+        <li>Database：MySQL、SQLite</li>
+        <li>Tools and Techniques：Git / GitHub、REST API、Excel / Power BI</li>
     </ul>
 </section>
 
 <section class="card">
-    <h2>工作經歷（軟實力）</h2>
+    <h2>Work Experience (Soft Skills)</h2>
     <ul>
-        <li>老乾杯 — 服務人員  
+        <li>Kanpai Classic — Service Staff  
             <ul>
-                <li>團隊協作與客戶溝通</li>
-                <li>快速應變與問題處理能力</li>
+                <li>Team Collaboration and Customer Communication</li>
+                <li>Quick Response and Effective Problem-Solving Skills</li>
             </ul>
         </li>
-        <li>文城補習班 — 行政助理  
+        <li>WenCheng Cram School — Administrative Assistant  
             <ul>
-                <li>課程資料整理與學生紀錄管理</li>
-                <li>熟悉流程規劃與資料整合</li>
+                <li>Course Data Organization and Student Record Management</li>
+                <li>Familiar with Process Planning and Data Integration</li>
             </ul>
         </li>
     </ul>
 </section>
 
 <section class="card">
-    <h2>求職目標</h2>
-    <p>希望進入資訊管理、系統開發或資料分析相關領域實習/工作，將學術知識與專案經驗應用於實務。</p>
+    <h2>Job Goals</h2>
+    <p>I hope to secure an internship or work opportunity in information management, system development, or data analysis, where I can apply my academic knowledge and project experience in a practical setting.</p>
 </section>
 <footer>
     <p>© 2025 芳靚</p>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card");
+
+  function checkCards() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      if (cardTop < triggerBottom) {
+        card.classList.add("show");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkCards);
+  checkCards(); // 頁面一載入就檢查一次
+});
+</script>
+
 </body>
 </html>
