@@ -349,7 +349,7 @@ form input[type="submit"]:hover {
     display: none;
     position: fixed;
     z-index: 200;
-    padding-top: 60px;
+    padding-top: 15px;
     left: 0;
     top: 0;
     width: 100%;
