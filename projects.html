@@ -73,8 +73,7 @@
 
     <!-- 🖼️ 圖片展示 -->
     <img src="images/memo.png" alt="Memo App Screenshot" width="100%">
-</section>
-
+    
 <section class="card">
     <h2>Database Order Management System (PHP + MySQL)</h2>
     <p><strong>Technology：</strong>PHP, MySQL, HTML, CSS, JS, XAMPP, Apache</p>
@@ -84,8 +83,34 @@
     </ul>
 
     <!-- 📄 PDF 展示 -->
-    <embed src="files/order_system.pdf" type="application/pdf" width="100%" height="600px">
+    <embed src="files/order_system.pdf" type="application/pdf" width="100%" height="600px" class="pdf-viewer">
+    <a href="files/order_system.pdf" target="_blank" class="pdf-link">下載 PDF</a>
 </section>
+
+<style>
+/* 手機版隱藏 PDF embed，只顯示連結 */
+@media screen and (max-width: 768px) {
+    .pdf-viewer {
+        display: none;
+    }
+    .pdf-link {
+        display: inline-block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+}
+
+/* 電腦版顯示 PDF embed，隱藏連結（可選） */
+@media screen and (min-width: 769px) {
+    .pdf-viewer {
+        display: block;
+    }
+    .pdf-link {
+        display: none;
+    }
+}
+</style>
+
 
 
 <footer>
